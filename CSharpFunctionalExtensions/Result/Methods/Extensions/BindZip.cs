@@ -1,4 +1,4 @@
-﻿#if (NETSTANDARD || NETCORE || NET5_0_OR_GREATER)
+﻿#if (NETSTANDARD || NET5_0_OR_GREATER)
 using System;
 
 namespace CSharpFunctionalExtensions

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-#if NET45_OR_GREATER || NETSTANDARD || NETCORE || NET5_0_OR_GREATER
+#if NET45_OR_GREATER || NETSTANDARD || NET5_0_OR_GREATER
 using System.Runtime.CompilerServices;
 #endif
 #if NET5_0_OR_GREATER
@@ -63,7 +63,7 @@ namespace CSharpFunctionalExtensions
         ///  Indicates whether the inner value is present and returns the value if it is.
         /// </summary>
         /// <param name="value">The inner value, if present; otherwise `default`</param>
-#if NET45_OR_GREATER || NETSTANDARD || NETCORE || NET5_0_OR_GREATER
+#if NET45_OR_GREATER || NETSTANDARD || NET5_0_OR_GREATER
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif
         public bool TryGetValue(

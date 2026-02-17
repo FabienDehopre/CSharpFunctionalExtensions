@@ -28,7 +28,7 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup Condition="!$(DefineConstants.Contains('NET5_0_OR_GREATER')) and !$(DefineConstants.Contains('NETCORE'))">
+  <ItemGroup Condition="!$(DefineConstants.Contains('NET5_0_OR_GREATER'))">
     <Compile Remove="Result\Json\Serialization\**"/>
     <EmbeddedResource Remove="Result\Json\Serialization\**"/>
     <None Remove="Result\Json\Serialization\**"/>

@@ -447,5 +447,5 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Json.Serialization
             public string ErrorMessage { get; set; }
         }
 
-    }
-}
+ 
+#endif

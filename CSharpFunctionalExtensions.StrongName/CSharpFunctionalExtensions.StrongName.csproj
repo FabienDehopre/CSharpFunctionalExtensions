@@ -16,6 +16,9 @@
   <PropertyGroup Condition="'$(TargetFramework)'=='net8.0'">
     <AssemblyTitle>CSharpFunctionalExtensions (with a strong name) .NET 8.0</AssemblyTitle>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net10.0'">
+    <AssemblyTitle>CSharpFunctionalExtensions (with a strong name) .NET 10.0</AssemblyTitle>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">

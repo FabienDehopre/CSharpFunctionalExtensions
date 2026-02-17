@@ -14,6 +14,9 @@
   <PropertyGroup Condition="'$(TargetFramework)'=='net8.0'">
     <AssemblyTitle>CSharpFunctionalExtensions .NET 8.0</AssemblyTitle>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net10.0'">
+    <AssemblyTitle>CSharpFunctionalExtensions .NET 10.0</AssemblyTitle>
+  </PropertyGroup>
 
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">

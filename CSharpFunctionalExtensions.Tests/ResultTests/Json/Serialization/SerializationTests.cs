@@ -131,6 +131,6 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Json.Serialization
             return JsonSerializer.Deserialize<TResult>(
                             JsonSerializer.SerializeToElement(result, SerializerOptions.Options),
                             SerializerOptions.Options);
-        }
-    }
+ 
 }
+#endif

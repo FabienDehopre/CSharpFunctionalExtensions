@@ -31,7 +31,7 @@ public class BindOptionalTests
             .BindOptional(x => Result.Success<int>(1));
 
         initialFailure.IsFailure.Should().BeTrue();
-        initialFailure.Error.IsSameOrEqualTo("nay");
+        initialFailure.Error.Should().Be("nay");
     }
     
     [Fact]
@@ -41,7 +41,7 @@ public class BindOptionalTests
             .BindOptional(x => Result.Failure<string>("nay"));
 
         bindFailure.IsFailure.Should().BeTrue();
-        bindFailure.Error.IsSameOrEqualTo("nay");
+        bindFailure.Error.Should().Be("nay");
     }
     
     [Fact]
@@ -69,7 +69,7 @@ public class BindOptionalTests
             .BindOptional(x => Result.Success<int, string>(1));
 
         initialFailure.IsFailure.Should().BeTrue();
-        initialFailure.Error.IsSameOrEqualTo("nay");
+        initialFailure.Error.Should().Be("nay");
     }
     
     [Fact]
@@ -79,6 +79,6 @@ public class BindOptionalTests
             .BindOptional(x => Result.Failure<string, string>("nay"));
 
         bindFailure.IsFailure.Should().BeTrue();
-        bindFailure.Error.IsSameOrEqualTo("nay");
+        bindFailure.Error.Should().Be("nay");
     }
 }

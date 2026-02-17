@@ -8,7 +8,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
     public class WhereTests_ValueTask_Left : MaybeTestBase
     {
         [Fact]
-        public async ValueTask Where_ValueTask_Left_returns_value_if_predicate_returns_true()
+        public async Task Where_ValueTask_Left_returns_value_if_predicate_returns_true()
         {
             Maybe<T> maybe = T.Value;
 
@@ -19,7 +19,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
         }
 
         [Fact]
-        public async ValueTask Where_ValueTask_Left_returns_no_value_if_predicate_returns_false()
+        public async Task Where_ValueTask_Left_returns_no_value_if_predicate_returns_false()
         {
             Maybe<T> maybe = T.Value;
 
@@ -31,7 +31,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public async ValueTask Where_ValueTask_Left_returns_no_value_if_initial_maybe_is_null(bool predicateResult)
+        public async Task Where_ValueTask_Left_returns_no_value_if_initial_maybe_is_null(bool predicateResult)
         {
             Maybe<T> maybe = null;
 

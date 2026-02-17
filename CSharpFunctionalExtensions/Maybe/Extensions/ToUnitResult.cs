@@ -7,7 +7,9 @@ namespace CSharpFunctionalExtensions
         public static UnitResult<E> ToUnitResult<E>(in this Maybe<E> maybe)
         {
             if (maybe.HasValue)
+            {
                 return UnitResult.Failure(maybe.Value);
+            }
 
             return UnitResult.Success<E>();
         }
@@ -15,7 +17,9 @@ namespace CSharpFunctionalExtensions
         public static UnitResult<E> ToUnitResult<T, E>(in this Maybe<T> maybe, E error)
         {
             if (maybe.HasNoValue)
+            {
                 return UnitResult.Failure(error);
+            }
 
             return UnitResult.Success<E>();
         }
@@ -23,7 +27,9 @@ namespace CSharpFunctionalExtensions
         public static UnitResult<E> ToUnitResult<T, E>(in this Maybe<T> maybe, Func<E> errorFunc)
         {
             if (maybe.HasNoValue)
+            {
                 return UnitResult.Failure(errorFunc());
+            }
 
             return UnitResult.Success<E>();
         }

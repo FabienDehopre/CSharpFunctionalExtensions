@@ -14,11 +14,15 @@ namespace CSharpFunctionalExtensions
             Func<T, Result<K>> bind)
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<Maybe<K>>(result.Error);
+            }
 
             if (result.Value.HasNoValue)
+            {
                 return Result.Success<Maybe<K>>(Maybe.None);
-            
+            }
+
             return bind(result.Value.Value).Map(Maybe.From);
         }
         
@@ -32,11 +36,15 @@ namespace CSharpFunctionalExtensions
             Func<T, Result<K, E>> bind)
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<Maybe<K>, E>(result.Error);
+            }
 
             if (result.Value.HasNoValue)
+            {
                 return Result.Success<Maybe<K>, E>(Maybe.None);
-            
+            }
+
             return bind(result.Value.Value).Map(Maybe.From);
         }
     }

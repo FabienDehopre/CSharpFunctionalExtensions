@@ -58,7 +58,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Maybe<T> maybe = await maybeTask;
 
             if (maybe.HasNoValue)
+            {
                 return await fallbackOperation();
+            }
 
             return maybe;
         }

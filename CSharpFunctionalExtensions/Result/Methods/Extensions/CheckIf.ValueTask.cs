@@ -9,45 +9,65 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<T, ValueTask<Result>> valueTask)
         {
             if (condition)
+            {
                 return resultTask.Check(valueTask);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         public static ValueTask<Result<T>> CheckIf<T, K>(this ValueTask<Result<T>> resultTask, bool condition,
             Func<T, ValueTask<Result<K>>> valueTask)
         {
             if (condition)
+            {
                 return resultTask.Check(valueTask);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         public static ValueTask<Result<T, E>> CheckIf<T, K, E>(this ValueTask<Result<T, E>> resultTask, bool condition,
             Func<T, ValueTask<Result<K, E>>> valueTask)
         {
             if (condition)
+            {
                 return resultTask.Check(valueTask);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         public static ValueTask<Result<T, E>> CheckIf<T, E>(this ValueTask<Result<T, E>> resultTask, bool condition,
             Func<T, ValueTask<UnitResult<E>>> valueTask)
         {
             if (condition)
+            {
                 return resultTask.Check(valueTask);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         public static ValueTask<UnitResult<E>> CheckIf<E>(this ValueTask<UnitResult<E>> resultTask, bool condition,
             Func<ValueTask<UnitResult<E>>> valueTask)
         {
             if (condition)
+            {
                 return resultTask.Check(valueTask);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         public static async ValueTask<Result<T>> CheckIf<T>(this ValueTask<Result<T>> resultTask,
@@ -56,9 +76,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Check(valueTask);
+            }
             else
+            {
                 return result;
+            }
         }
 
         public static async ValueTask<Result<T>> CheckIf<T, K>(this ValueTask<Result<T>> resultTask,
@@ -67,9 +91,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Check(valueTask);
+            }
             else
+            {
                 return result;
+            }
         }
 
         public static async ValueTask<Result<T, E>> CheckIf<T, K, E>(this ValueTask<Result<T, E>> resultTask,
@@ -78,9 +106,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Check(valueTask);
+            }
             else
+            {
                 return result;
+            }
         }
 
         public static async ValueTask<Result<T, E>> CheckIf<T, E>(this ValueTask<Result<T, E>> resultTask,
@@ -89,9 +121,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Check(valueTask);
+            }
             else
+            {
                 return result;
+            }
         }
 
         public static async ValueTask<UnitResult<E>> CheckIf<E>(this ValueTask<UnitResult<E>> resultTask,
@@ -100,9 +136,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             UnitResult<E> result = await resultTask;
 
             if (result.IsSuccess && predicate())
+            {
                 return await result.Check(valueTask);
+            }
             else
+            {
                 return result;
+            }
         }
     }
 }

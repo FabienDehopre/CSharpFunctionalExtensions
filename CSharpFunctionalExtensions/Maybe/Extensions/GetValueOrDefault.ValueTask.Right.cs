@@ -8,7 +8,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static async ValueTask<T> GetValueOrDefault<T>(this Maybe<T> maybe, Func<ValueTask<T>> valueTask)
         {
             if (maybe.HasNoValue)
+            {
                 return await valueTask();
+            }
 
             return maybe.GetValueOrThrow();
         }
@@ -17,7 +19,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<ValueTask<K>> valueTask)
         {
             if (maybe.HasNoValue)
+            {
                 return await valueTask();
+            }
 
             return selector(maybe.GetValueOrThrow());
         }
@@ -26,7 +30,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             K defaultValue = default)
         {
             if (maybe.HasNoValue)
+            {
                 return defaultValue;
+            }
 
             return await valueTask(maybe.GetValueOrThrow());
         }
@@ -35,7 +41,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<ValueTask<K>> defaultValue)
         {
             if (maybe.HasNoValue)
+            {
                 return await defaultValue();
+            }
 
             return await valueTask(maybe.GetValueOrThrow());
         }

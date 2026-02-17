@@ -11,9 +11,13 @@ namespace CSharpFunctionalExtensions
         public static Task<Result> TapIf(this Task<Result> resultTask, bool condition, Func<Task> func)
         {
             if (condition)
+            {
                 return resultTask.Tap(func);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -22,9 +26,13 @@ namespace CSharpFunctionalExtensions
         public static Task<Result<T>> TapIf<T>(this Task<Result<T>> resultTask, bool condition, Func<Task> func)
         {
             if (condition)
+            {
                 return resultTask.Tap(func);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -33,9 +41,13 @@ namespace CSharpFunctionalExtensions
         public static Task<Result<T>> TapIf<T>(this Task<Result<T>> resultTask, bool condition, Func<T, Task> func)
         {
             if (condition)
+            {
                 return resultTask.Tap(func);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -44,9 +56,13 @@ namespace CSharpFunctionalExtensions
         public static Task<Result<T, E>> TapIf<T, E>(this Task<Result<T, E>> resultTask, bool condition, Func<Task> func)
         {
             if (condition)
+            {
                 return resultTask.Tap(func);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -55,9 +71,13 @@ namespace CSharpFunctionalExtensions
         public static Task<Result<T, E>> TapIf<T, E>(this Task<Result<T, E>> resultTask, bool condition, Func<T, Task> func)
         {
             if (condition)
+            {
                 return resultTask.Tap(func);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -66,9 +86,13 @@ namespace CSharpFunctionalExtensions
         public static Task<UnitResult<E>> TapIf<E>(this Task<UnitResult<E>> resultTask, bool condition, Func<Task> func)
         {
             if (condition)
+            {
                 return resultTask.Tap(func);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -79,9 +103,13 @@ namespace CSharpFunctionalExtensions
             Result<T> result = await resultTask.DefaultAwait();
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Tap(func).DefaultAwait();
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -92,9 +120,13 @@ namespace CSharpFunctionalExtensions
             Result<T> result = await resultTask.DefaultAwait();
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Tap(func).DefaultAwait();
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -105,9 +137,13 @@ namespace CSharpFunctionalExtensions
             Result<T, E> result = await resultTask.DefaultAwait();
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Tap(func).DefaultAwait();
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -118,9 +154,13 @@ namespace CSharpFunctionalExtensions
             Result<T, E> result = await resultTask.DefaultAwait();
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Tap(func).DefaultAwait();
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -131,9 +171,13 @@ namespace CSharpFunctionalExtensions
             UnitResult<E> result = await resultTask.DefaultAwait();
 
             if (result.IsSuccess && predicate())
+            {
                 return await result.Tap(func).DefaultAwait();
+            }
             else
+            {
                 return result;
+            }
         }
         
         /// <summary>
@@ -144,9 +188,13 @@ namespace CSharpFunctionalExtensions
             Result<T, E> result = await resultTask.DefaultAwait();
             
             if (result.IsSuccess && await predicate().DefaultAwait())
+            {
                 return await result.Tap(func).DefaultAwait();
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -157,9 +205,13 @@ namespace CSharpFunctionalExtensions
             Result<T, E> result = await resultTask.DefaultAwait();
             
             if (result.IsSuccess && await predicate(result.Value).DefaultAwait())
+            {
                 return await result.Tap(func).DefaultAwait();
+            }
             else
+            {
                 return result;
+            }
         }
 
     }

@@ -16,7 +16,9 @@ namespace CSharpFunctionalExtensions
             Result<T, E> result = await resultTask.DefaultAwait();
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await func(result.Value).DefaultAwait();
 
@@ -35,7 +37,9 @@ namespace CSharpFunctionalExtensions
             Result<T, E> result = await resultTask.DefaultAwait();
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await func(result.Value, context).DefaultAwait();
 
@@ -53,7 +57,9 @@ namespace CSharpFunctionalExtensions
             UnitResult<E> result = await resultTask.DefaultAwait();
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await func().DefaultAwait();
 
@@ -72,7 +78,9 @@ namespace CSharpFunctionalExtensions
             UnitResult<E> result = await resultTask.DefaultAwait();
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await func(context).DefaultAwait();
 
@@ -90,7 +98,9 @@ namespace CSharpFunctionalExtensions
             Result<T> result = await resultTask.DefaultAwait();
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await func(result.Value).DefaultAwait();
 
@@ -109,7 +119,9 @@ namespace CSharpFunctionalExtensions
             Result<T> result = await resultTask.DefaultAwait();
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await func(result.Value, context).DefaultAwait();
 
@@ -124,7 +136,9 @@ namespace CSharpFunctionalExtensions
             Result result = await resultTask.DefaultAwait();
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await func().DefaultAwait();
 
@@ -143,7 +157,9 @@ namespace CSharpFunctionalExtensions
             Result result = await resultTask.DefaultAwait();
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await func(context).DefaultAwait();
 

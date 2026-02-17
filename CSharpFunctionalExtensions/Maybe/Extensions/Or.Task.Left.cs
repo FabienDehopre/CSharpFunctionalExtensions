@@ -18,7 +18,9 @@ namespace CSharpFunctionalExtensions
             var maybe = await maybeTask.DefaultAwait();
 
             if (maybe.HasNoValue)
+            {
                 return Maybe<T>.From(fallback);
+            }
 
             return maybe;
         }
@@ -36,7 +38,9 @@ namespace CSharpFunctionalExtensions
             var maybe = await maybeTask.DefaultAwait();
 
             if (maybe.HasNoValue)
+            {
                 return Maybe<T>.From(fallbackOperation());
+            }
 
             return maybe;
         }
@@ -54,7 +58,9 @@ namespace CSharpFunctionalExtensions
             var maybe = await maybeTask.DefaultAwait();
 
             if (maybe.HasNoValue)
+            {
                 return fallback;
+            }
 
             return maybe;
         }

@@ -10,7 +10,9 @@ namespace CSharpFunctionalExtensions
         public static Result MapError(this Result result, Func<string, string> errorFactory)
         {
             if (result.IsFailure)
+            {
                 return Result.Failure(errorFactory(result.Error));
+            }
 
             return Result.Success();
         }
@@ -22,7 +24,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure(errorFactory(result.Error, context));
+            }
 
             return Result.Success();
         }
@@ -33,7 +37,9 @@ namespace CSharpFunctionalExtensions
         public static UnitResult<E> MapError<E>(this Result result, Func<string, E> errorFactory)
         {
             if (result.IsFailure)
+            {
                 return UnitResult.Failure(errorFactory(result.Error));
+            }
 
             return UnitResult.Success<E>();
         }
@@ -45,7 +51,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return UnitResult.Failure(errorFactory(result.Error, context));
+            }
 
             return UnitResult.Success<E>();
         }
@@ -59,7 +67,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<T>(errorFactory(result.Error));
+            }
 
             return Result.Success(result.Value);
         }
@@ -71,7 +81,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<T>(errorFactory(result.Error, context));
+            }
 
             return Result.Success(result.Value);
         }
@@ -85,7 +97,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<T, E>(errorFactory(result.Error));
+            }
 
             return Result.Success<T, E>(result.Value);
         }
@@ -97,7 +111,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<T, E>(errorFactory(result.Error, context));
+            }
 
             return Result.Success<T, E>(result.Value);
         }
@@ -108,7 +124,9 @@ namespace CSharpFunctionalExtensions
         public static Result MapError<E>(this UnitResult<E> result, Func<E, string> errorFactory)
         {
             if (result.IsFailure)
+            {
                 return Result.Failure(errorFactory(result.Error));
+            }
 
             return Result.Success();
         }
@@ -120,7 +138,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure(errorFactory(result.Error, context));
+            }
 
             return Result.Success();
         }
@@ -134,7 +154,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return UnitResult.Failure(errorFactory(result.Error));
+            }
 
             return UnitResult.Success<E2>();
         }
@@ -146,7 +168,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return UnitResult.Failure(errorFactory(result.Error, context));
+            }
 
             return UnitResult.Success<E2>();
         }
@@ -160,7 +184,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<T>(errorFactory(result.Error));
+            }
 
             return Result.Success(result.Value);
         }
@@ -172,7 +198,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<T>(errorFactory(result.Error, context));
+            }
 
             return Result.Success(result.Value);
         }
@@ -186,7 +214,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<T, E2>(errorFactory(result.Error));
+            }
 
             return Result.Success<T, E2>(result.Value);
         }
@@ -198,7 +228,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<T, E2>(errorFactory(result.Error, context));
+            }
 
             return Result.Success<T, E2>(result.Value);
         }

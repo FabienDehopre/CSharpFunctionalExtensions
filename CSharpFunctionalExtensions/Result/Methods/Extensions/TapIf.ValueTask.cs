@@ -12,9 +12,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<ValueTask> valueTask)
         {
             if (condition)
+            {
                 return resultTask.Tap(valueTask);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -24,9 +28,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<ValueTask> valueTask)
         {
             if (condition)
+            {
                 return resultTask.Tap(valueTask);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -36,9 +44,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<T, ValueTask> valueTask)
         {
             if (condition)
+            {
                 return resultTask.Tap(valueTask);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -48,9 +60,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<ValueTask> valueTask)
         {
             if (condition)
+            {
                 return resultTask.Tap(valueTask);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -60,9 +76,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<T, ValueTask> valueTask)
         {
             if (condition)
+            {
                 return resultTask.Tap(valueTask);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -72,9 +92,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<ValueTask> valueTask)
         {
             if (condition)
+            {
                 return resultTask.Tap(valueTask);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -86,9 +110,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Tap(valueTask);
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -100,9 +128,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Tap(valueTask);
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -114,9 +146,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Tap(valueTask);
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -128,9 +164,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return await result.Tap(valueTask);
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -142,9 +182,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             UnitResult<E> result = await resultTask;
 
             if (result.IsSuccess && predicate())
+            {
                 return await result.Tap(valueTask);
+            }
             else
+            {
                 return result;
+            }
         }
     }
 }

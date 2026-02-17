@@ -17,7 +17,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Maybe<T> maybe = await maybeTask;
 
             if (maybe.HasNoValue)
+            {
                 return Maybe<T>.From(fallback);
+            }
 
             return maybe;
         }
@@ -34,7 +36,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Maybe<T> maybe = await maybeTask;
 
             if (maybe.HasNoValue)
+            {
                 return Maybe<T>.From(fallbackOperation());
+            }
 
             return maybe;
         }
@@ -51,7 +55,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Maybe<T> maybe = await maybeTask;
 
             if (maybe.HasNoValue)
+            {
                 return fallback;
+            }
 
             return maybe;
         }
@@ -69,7 +75,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Maybe<T> maybe = await maybeTask;
 
             if (maybe.HasNoValue)
+            {
                 return fallbackOperation();
+            }
 
             return maybe;
         }

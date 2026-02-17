@@ -7,7 +7,9 @@ namespace CSharpFunctionalExtensions
         public static Maybe<K> Bind<T, K>(in this Maybe<T> maybe, Func<T, Maybe<K>> selector)
         {
             if (maybe.HasNoValue)
+            {
                 return Maybe<K>.None;
+            }
 
             return selector(maybe.GetValueOrThrow());
         }
@@ -19,7 +21,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (maybe.HasNoValue)
+            {
                 return Maybe<K>.None;
+            }
 
             return selector(maybe.GetValueOrThrow(), context);
         }

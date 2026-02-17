@@ -18,7 +18,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     await func();
+                }
 
                 return result;
             }
@@ -42,7 +44,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     await func();
+                }
 
                 return result;
             }
@@ -66,7 +70,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     await func(result.Value);
+                }
 
                 return result;
             }
@@ -88,7 +94,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     await func();
+                }
 
                 return result;
             }
@@ -110,7 +118,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     await func();
+                }
 
                 return result;
             }
@@ -132,7 +142,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     await func(result.Value);
+                }
 
                 return result;
             }
@@ -156,7 +168,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess && predicate(result.Value) && result.IsSuccess)
+                {
                     await func();
+                }
 
                 return result;
             }
@@ -180,7 +194,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess && predicate(result.Value))
+                {
                     await func(result.Value);
+                }
 
                 return result;
             }
@@ -202,7 +218,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess && predicate(result.Value))
+                {
                     await func();
+                }
 
                 return result;
             }
@@ -224,7 +242,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess && predicate(result.Value))
+                {
                     await func(result.Value);
+                }
 
                 return result;
             }

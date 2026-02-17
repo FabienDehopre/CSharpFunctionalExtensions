@@ -17,7 +17,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             var maybe = await maybeTask;
 
             if (maybe.HasNoValue)
+            {
                 return;
+            }
 
             action(maybe.GetValueOrThrow());
         }

@@ -10,7 +10,9 @@ namespace CSharpFunctionalExtensions
         public static Result Tap(this Result result, Action action)
         {
             if (result.IsSuccess)
+            {
                 action();
+            }
 
             return result;
         }
@@ -21,7 +23,9 @@ namespace CSharpFunctionalExtensions
         public static Result<T> Tap<T>(this Result<T> result, Action action)
         {
             if (result.IsSuccess)
+            {
                 action();
+            }
 
             return result;
         }
@@ -32,7 +36,9 @@ namespace CSharpFunctionalExtensions
         public static Result<T> Tap<T>(this Result<T> result, Action<T> action)
         {
             if (result.IsSuccess)
+            {
                 action(result.Value);
+            }
 
             return result;
         }
@@ -43,7 +49,9 @@ namespace CSharpFunctionalExtensions
         public static UnitResult<E> Tap<E>(this UnitResult<E> result, Action action)
         {
             if (result.IsSuccess)
+            {
                 action();
+            }
 
             return result;
         }
@@ -54,7 +62,9 @@ namespace CSharpFunctionalExtensions
         public static Result<T, E> Tap<T, E>(this Result<T, E> result, Action action)
         {
             if (result.IsSuccess)
+            {
                 action();
+            }
 
             return result;
         }
@@ -65,7 +75,9 @@ namespace CSharpFunctionalExtensions
         public static Result<T, E> Tap<T, E>(this Result<T, E> result, Action<T> action)
         {
             if (result.IsSuccess)
+            {
                 action(result.Value);
+            }
 
             return result;
         }

@@ -11,7 +11,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
         )
         {
             if (maybe.HasNoValue)
+            {
                 return Maybe<K>.None;
+            }
 
             return await valueTask(maybe.GetValueOrThrow());
         }
@@ -23,7 +25,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
         )
         {
             if (maybe.HasNoValue)
+            {
                 return Maybe<K>.None;
+            }
 
             return await valueTask(maybe.GetValueOrThrow(), context);
         }

@@ -39,7 +39,9 @@ namespace CSharpFunctionalExtensions
         public T GetValueOrDefault(T defaultValue = default)
         {
             if (IsFailure)
+            {
                 return defaultValue;
+            }
 
             return Value;
         }
@@ -60,17 +62,25 @@ namespace CSharpFunctionalExtensions
         public static implicit operator Result(Result<T> result)
         {
             if (result.IsSuccess)
+            {
                 return Result.Success();
+            }
             else
+            {
                 return Result.Failure(result.Error);
+            }
         }
 
         public static implicit operator UnitResult<string>(Result<T> result)
         {
             if (result.IsSuccess)
+            {
                 return UnitResult.Success<string>();
+            }
             else
+            {
                 return UnitResult.Failure(result.Error);
+            }
         }
     }
 }

@@ -8,7 +8,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static async ValueTask<T> GetValueOrDefault<T>(this Result<T> result, Func<ValueTask<T>> valueTask)
         {
             if (result.IsFailure)
+            {
                 return await valueTask();
+            }
 
             return result.Value;
         }
@@ -17,7 +19,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<ValueTask<K>> valueTask)
         {
             if (result.IsFailure)
+            {
                 return await valueTask();
+            }
 
             return selector(result.Value);
         }
@@ -26,7 +30,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             K defaultValue = default)
         {
             if (result.IsFailure)
+            {
                 return defaultValue;
+            }
 
             return await valueTask(result.Value);
         }
@@ -35,7 +41,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<ValueTask<K>> defaultValue)
         {
             if (result.IsFailure)
+            {
                 return await defaultValue();
+            }
 
             return await valueTask(result.Value);
         }

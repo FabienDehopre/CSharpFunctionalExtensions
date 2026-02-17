@@ -8,7 +8,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static ValueTask<Maybe<K>> Bind<T, K>(this Maybe<T> maybe, Func<T, ValueTask<Maybe<K>>> selector)
         {
             if (maybe.HasNoValue)
+            {
                 return Maybe<K>.None.AsCompletedValueTask();
+            }
 
             return selector(maybe.GetValueOrThrow());
         }
@@ -19,7 +21,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
                 TContext context)
         {
             if (maybe.HasNoValue)
+            {
                 return Maybe<K>.None.AsCompletedValueTask();
+            }
 
             return selector(maybe.GetValueOrThrow(), context);
         }

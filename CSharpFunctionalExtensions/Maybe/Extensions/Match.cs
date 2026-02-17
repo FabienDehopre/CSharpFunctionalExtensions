@@ -23,9 +23,13 @@ namespace CSharpFunctionalExtensions
         public static void Match<T>(in this Maybe<T> maybe, Action<T> Some, Action None)
         {
             if (maybe.HasValue)
+            {
                 Some(maybe.GetValueOrThrow());
+            }
             else
+            {
                 None();
+            }
         }
 
         public static void Match<T, TContext>(
@@ -36,9 +40,13 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (maybe.HasValue)
+            {
                 Some(maybe.GetValueOrThrow(), context);
+            }
             else
+            {
                 None(context);
+            }
         }
 
         public static TE Match<TE, TKey, TValue>(
@@ -71,9 +79,13 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (maybe.HasValue)
+            {
                 Some.Invoke(maybe.GetValueOrThrow().Key, maybe.GetValueOrThrow().Value);
+            }
             else
+            {
                 None.Invoke();
+            }
         }
 
         public static void Match<TKey, TValue, TContext>(
@@ -84,9 +96,13 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (maybe.HasValue)
+            {
                 Some.Invoke(maybe.GetValueOrThrow().Key, maybe.GetValueOrThrow().Value, context);
+            }
             else
+            {
                 None.Invoke(context);
+            }
         }
     }
 }

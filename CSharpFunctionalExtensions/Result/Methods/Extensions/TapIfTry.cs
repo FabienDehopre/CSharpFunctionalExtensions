@@ -15,7 +15,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     action();
+                }
 
                 return result;
             }
@@ -37,7 +39,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     action();
+                }
 
                 return result;
             }
@@ -59,7 +63,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     action(result.Value);
+                }
 
                 return result;
             }
@@ -79,7 +85,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     action();
+                }
 
                 return result;
             }
@@ -99,7 +107,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     action();
+                }
 
                 return result;
             }
@@ -119,7 +129,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (condition && result.IsSuccess)
+                {
                     action(result.Value);
+                }
 
                 return result;
             }
@@ -141,7 +153,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess && predicate(result.Value) && result.IsSuccess)
+                {
                     action();
+                }
 
                 return result;
             }
@@ -163,7 +177,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess && predicate(result.Value))
+                {
                     action(result.Value);
+                }
 
                 return result;
             }
@@ -183,7 +199,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess && predicate(result.Value))
+                {
                     action();
+                }
 
                 return result;
             }
@@ -203,7 +221,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess && predicate(result.Value))
+                {
                     action(result.Value);
+                }
 
                 return result;
             }

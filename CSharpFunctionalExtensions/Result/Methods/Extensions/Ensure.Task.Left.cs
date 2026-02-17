@@ -42,7 +42,9 @@ namespace CSharpFunctionalExtensions
             Result<T> result = await resultTask.DefaultAwait();
 
             if (result.IsFailure)
+            {
                 return result;
+            }
 
             return result.Ensure(predicate, errorPredicate);
         }
@@ -55,10 +57,14 @@ namespace CSharpFunctionalExtensions
             Result<T> result = await resultTask.DefaultAwait();
 
             if (result.IsFailure)
+            {
                 return result;
+            }
 
             if (predicate(result.Value))
+            {
                 return result;
+            }
 
             return Result.Failure<T>(await errorPredicate(result.Value).DefaultAwait());
         }

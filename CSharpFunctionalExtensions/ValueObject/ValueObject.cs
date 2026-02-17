@@ -15,10 +15,14 @@ namespace CSharpFunctionalExtensions
         public override bool Equals(object obj)
         {
             if (obj == null)
+            {
                 return false;
+            }
 
             if (GetUnproxiedType(this) != GetUnproxiedType(obj))
+            {
                 return false;
+            }
 
             var valueObject = (ValueObject)obj;
 
@@ -45,10 +49,14 @@ namespace CSharpFunctionalExtensions
         public static bool operator ==(ValueObject a, ValueObject b)
         {
             if (a is null && b is null)
+            {
                 return true;
+            }
 
             if (a is null || b is null)
+            {
                 return false;
+            }
 
             return a.Equals(b);
         }
@@ -67,7 +75,9 @@ namespace CSharpFunctionalExtensions
             string typeString = type.ToString();
 
             if (typeString.Contains(EFCoreProxyPrefix) || typeString.EndsWith(NHibernateProxyPostfix))
+            {
                 return type.BaseType;
+            }
 
             return type;
         }

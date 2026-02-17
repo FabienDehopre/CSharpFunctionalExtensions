@@ -13,7 +13,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result result = await resultTask;
 
             if (result.IsSuccess)
+            {
                 await valueTask();
+            }
 
             return result;
         }
@@ -26,7 +28,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsSuccess)
+            {
                 await valueTask();
+            }
 
             return result;
         }
@@ -40,7 +44,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsSuccess)
+            {
                 await valueTask(result.Value);
+            }
 
             return result;
         }
@@ -54,7 +60,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             UnitResult<E> result = await resultTask;
 
             if (result.IsSuccess)
+            {
                 await valueTask();
+            }
 
             return result;
         }
@@ -68,7 +76,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsSuccess)
+            {
                 await valueTask();
+            }
 
             return result;
         }
@@ -82,7 +92,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsSuccess)
+            {
                 await valueTask(result.Value);
+            }
 
             return result;
         }

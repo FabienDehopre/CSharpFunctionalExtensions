@@ -11,7 +11,9 @@
             foreach (Result result in results)
             {
                 if (result.IsFailure)
+                {
                     return result;
+                }
             }
 
             return Success();

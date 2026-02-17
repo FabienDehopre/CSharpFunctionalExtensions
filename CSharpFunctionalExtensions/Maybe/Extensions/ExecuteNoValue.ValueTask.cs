@@ -16,7 +16,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             var maybe = await maybeTask;
 
             if (maybe.HasValue)
+            {
                 return;
+            }
 
             await valueTask();
         }

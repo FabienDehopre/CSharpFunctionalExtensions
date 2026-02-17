@@ -57,10 +57,14 @@ namespace CSharpFunctionalExtensions
         public override bool Equals(object obj)
         {
             if (obj == null)
+            {
                 return false;
+            }
 
             if (GetUnproxiedType(this) != GetUnproxiedType(obj))
+            {
                 return false;
+            }
 
             var enumValueObject = (EnumValueObject<TEnumeration, TId>)obj;
 
@@ -178,10 +182,14 @@ namespace CSharpFunctionalExtensions
         public override bool Equals(object obj)
         {
             if (obj == null)
+            {
                 return false;
+            }
 
             if (GetUnproxiedType(this) != GetUnproxiedType(obj))
+            {
                 return false;
+            }
 
             var enumValueObject = (EnumValueObject<TEnumeration>)obj;
 

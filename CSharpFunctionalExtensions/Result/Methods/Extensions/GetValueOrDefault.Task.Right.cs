@@ -8,7 +8,9 @@ namespace CSharpFunctionalExtensions
         public static async Task<T> GetValueOrDefault<T>(this Result<T> result, Func<Task<T>> defaultValue)
         {
             if (result.IsFailure)
+            {
                 return await defaultValue().DefaultAwait();
+            }
 
             return result.Value;
         }
@@ -17,7 +19,9 @@ namespace CSharpFunctionalExtensions
             Func<Task<K>> defaultValue)
         {
             if (result.IsFailure)
+            {
                 return await defaultValue().DefaultAwait();
+            }
 
             return selector(result.Value);
         }
@@ -26,7 +30,9 @@ namespace CSharpFunctionalExtensions
             K defaultValue = default)
         {
             if (result.IsFailure)
+            {
                 return defaultValue;
+            }
 
             return await selector(result.Value).DefaultAwait();
         }
@@ -35,7 +41,9 @@ namespace CSharpFunctionalExtensions
             Func<Task<K>> defaultValue)
         {
             if (result.IsFailure)
+            {
                 return await defaultValue().DefaultAwait();
+            }
 
             return await selector(result.Value).DefaultAwait();
         }

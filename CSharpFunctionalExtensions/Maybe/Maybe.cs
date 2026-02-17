@@ -22,7 +22,9 @@ namespace CSharpFunctionalExtensions
         public T GetValueOrThrow(string? errorMessage = null)
         {
             if (HasNoValue)
+            {
                 throw new InvalidOperationException(errorMessage ?? Configuration.NoValueException);
+            }
 
             return _value;
         }
@@ -34,7 +36,9 @@ namespace CSharpFunctionalExtensions
         public T GetValueOrThrow(Exception exception)
         {
             if (HasNoValue)
+            {
                 throw exception;
+            }
 
             return _value;
         }
@@ -42,7 +46,9 @@ namespace CSharpFunctionalExtensions
         public T GetValueOrDefault(T defaultValue)
         {
             if (HasNoValue)
+            {
                 return defaultValue;
+            }
 
             return _value;
         }
@@ -50,7 +56,9 @@ namespace CSharpFunctionalExtensions
         public T? GetValueOrDefault()
         {
             if (HasNoValue)
+            {
                 return default;
+            }
 
             return _value;
         }
@@ -135,10 +143,14 @@ namespace CSharpFunctionalExtensions
         public static bool operator ==(Maybe<T> maybe, T? value)
         {
             if (value is Maybe<T> maybeValue)
+            {
                 return maybe.Equals(maybeValue);
+            }
 
             if (maybe.HasNoValue)
+            {
                 return value == null;
+            }
 
             return maybe._value.Equals(value);
         }
@@ -171,13 +183,19 @@ namespace CSharpFunctionalExtensions
         public override bool Equals(object? obj)
         {
             if (obj == null)
+            {
                 return false;
+            }
 
             if (obj is Maybe<T> otherMaybe)
+            {
                 return Equals(otherMaybe);
+            }
 
             if (obj is T otherValue)
+            {
                 return Equals(otherValue);
+            }
 
             return false;
         }
@@ -185,10 +203,14 @@ namespace CSharpFunctionalExtensions
         public bool Equals(Maybe<T> other)
         {
             if (HasNoValue && other.HasNoValue)
+            {
                 return true;
+            }
 
             if (HasNoValue || other.HasNoValue)
+            {
                 return false;
+            }
 
             return EqualityComparer<T>.Default.Equals(_value, other._value);
         }
@@ -196,7 +218,9 @@ namespace CSharpFunctionalExtensions
         public override int GetHashCode()
         {
             if (HasNoValue)
+            {
                 return 0;
+            }
 
             return _value.GetHashCode();
         }
@@ -204,7 +228,9 @@ namespace CSharpFunctionalExtensions
         public override string ToString()
         {
             if (HasNoValue)
+            {
                 return "No value";
+            }
 
             return _value.ToString() ?? _value.GetType().Name;
         }

@@ -20,7 +20,9 @@ namespace CSharpFunctionalExtensions
             List<Result> failedResults = results.Where(x => x.IsFailure).ToList();
 
             if (failedResults.Count == 0)
+            {
                 return Success();
+            }
 
             string errorMessage = string.Join(errorMessagesSeparator ?? Configuration.ErrorMessagesSeparator, AggregateMessages(failedResults.Select(x => x.Error)));
             return Failure(errorMessage);
@@ -56,7 +58,9 @@ namespace CSharpFunctionalExtensions
             List<UnitResult<E>> failedResults = results.Where(x => x.IsFailure).ToList();
 
             if (failedResults.Count == 0)
+            {
                 return UnitResult.Success<E>();
+            }
 
             E error = composerError(failedResults.Select(x => x.Error));
             return UnitResult.Failure(error);
@@ -216,7 +220,9 @@ namespace CSharpFunctionalExtensions
             foreach (var message in messages)
             {
                 if (!dict.ContainsKey(message))
+                {
                     dict.Add(message, 0);
+                }
 
                 dict[message]++;
             }

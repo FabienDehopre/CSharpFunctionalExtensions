@@ -1,5 +1,4 @@
-﻿#if NETCOREAPP3_0_OR_GREATER
-namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
+﻿namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 {
     using System;
     using System.Threading.Tasks;
@@ -194,5 +193,3 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
     {
     }
 }
-
-#endif

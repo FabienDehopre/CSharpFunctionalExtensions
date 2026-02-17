@@ -2,12 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-#if NET45_OR_GREATER || NETSTANDARD || NET5_0_OR_GREATER
 using System.Runtime.CompilerServices;
-#endif
-#if NET5_0_OR_GREATER
 using System.Diagnostics.CodeAnalysis;
-#endif
 
 namespace CSharpFunctionalExtensions
 {
@@ -63,13 +59,9 @@ namespace CSharpFunctionalExtensions
         ///  Indicates whether the inner value is present and returns the value if it is.
         /// </summary>
         /// <param name="value">The inner value, if present; otherwise `default`</param>
-#if NET45_OR_GREATER || NETSTANDARD || NET5_0_OR_GREATER
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public bool TryGetValue(
-#if NET5_0_OR_GREATER
             [NotNullWhen(true), MaybeNullWhen(false)]
-#endif
             out T? value)
         {
             value = _value;
@@ -83,14 +75,10 @@ namespace CSharpFunctionalExtensions
 
         public static Maybe<T> None => new Maybe<T>();
 
-#if NET5_0_OR_GREATER
         [MemberNotNullWhen(true, "_value")]
-#endif
         public bool HasValue => _isValueSet;
 
-#if NET5_0_OR_GREATER
         [MemberNotNullWhen(false, "_value")]
-#endif
         public bool HasNoValue => !HasValue;
 
         private Maybe(T? value)

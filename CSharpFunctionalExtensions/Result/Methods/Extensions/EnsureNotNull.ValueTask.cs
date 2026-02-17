@@ -1,4 +1,3 @@
-#if NET5_0_OR_GREATER
 #nullable enable
 
 using System;
@@ -57,4 +56,3 @@ namespace CSharpFunctionalExtensions.ValueTasks
         }
     }
 }
-#endif

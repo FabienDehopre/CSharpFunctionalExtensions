@@ -1,5 +1,4 @@
-﻿#if NETCOREAPP3_0_OR_GREATER
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace CSharpFunctionalExtensions
 {
@@ -52,5 +51,3 @@ namespace CSharpFunctionalExtensions
         }
     }
 }
-
-#endif

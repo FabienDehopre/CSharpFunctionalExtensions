@@ -1,4 +1,3 @@
-#if NETSTANDARD2_0 || NET5_0_OR_GREATER
 using System;
 
 namespace CSharpFunctionalExtensions
@@ -12,4 +11,3 @@ namespace CSharpFunctionalExtensions
             => WithTransactionScope(() => self.Map(f));
     }
 }
-#endif

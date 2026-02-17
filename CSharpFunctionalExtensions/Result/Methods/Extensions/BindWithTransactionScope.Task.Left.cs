@@ -1,4 +1,3 @@
-#if NETSTANDARD2_0 || NET5_0_OR_GREATER
 using System;
 using System.Threading.Tasks;
 
@@ -22,4 +21,3 @@ namespace CSharpFunctionalExtensions
             => WithTransactionScope(() => self.Bind(f));
     }
 }
-#endif

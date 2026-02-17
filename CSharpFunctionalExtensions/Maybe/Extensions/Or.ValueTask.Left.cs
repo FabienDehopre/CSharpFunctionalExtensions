@@ -1,5 +1,4 @@
-﻿#if NET5_0_OR_GREATER
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace CSharpFunctionalExtensions.ValueTasks
@@ -64,7 +63,8 @@ namespace CSharpFunctionalExtensions.ValueTasks
         /// <param name="fallbackOperation"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static async ValueTask<Maybe<T>> Or<T>(this ValueTask<Maybe<T>> maybeTask, Func<Maybe<T>> fallbackOperation)
+        public static async ValueTask<Maybe<T>> Or<T>(this ValueTask<Maybe<T>> maybeTask,
+            Func<Maybe<T>> fallbackOperation)
         {
             Maybe<T> maybe = await maybeTask;
 
@@ -75,4 +75,3 @@ namespace CSharpFunctionalExtensions.ValueTasks
         }
     }
 }
-#endif

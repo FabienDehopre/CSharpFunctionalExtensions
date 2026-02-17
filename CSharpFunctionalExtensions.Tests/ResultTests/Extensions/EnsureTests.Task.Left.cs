@@ -49,7 +49,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result<int?> result = await tResult.Ensure(value => !value.HasValue, value => $"should be null but found {value.Value}");
 
-            result.Should().Be(tResult.Result);
+            result.Should().Be(await tResult);
         }
 
         [Fact]

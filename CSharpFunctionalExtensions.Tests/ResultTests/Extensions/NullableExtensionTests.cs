@@ -1,4 +1,5 @@
-﻿namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
+﻿#nullable enable
+namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 {
     using System;
     using System.Threading.Tasks;

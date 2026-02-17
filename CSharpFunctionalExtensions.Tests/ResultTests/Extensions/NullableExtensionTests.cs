@@ -1,4 +1,4 @@
-﻿#if NETCOREAPP3_0_OR_GREATER
+﻿#nullable enable
 namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 {
     using System;
@@ -194,5 +194,3 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
     {
     }
 }
-
-#endif

@@ -17,7 +17,9 @@ namespace CSharpFunctionalExtensions
             var maybe = await maybeTask.DefaultAwait();
 
             if (maybe.HasNoValue)
+            {
                 return;
+            }
 
             await asyncAction(maybe.GetValueOrThrow()).DefaultAwait();
         } 

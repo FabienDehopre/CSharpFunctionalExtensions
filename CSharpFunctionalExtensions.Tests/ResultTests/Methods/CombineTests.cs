@@ -538,7 +538,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests
             Result<IEnumerable<int>> result = await task.Combine(";");
 
             result.IsSuccess.Should().BeTrue();
-            result.Value.Should().BeEquivalentTo(7, 77, 777);
+            result.Value.Should().BeEquivalentTo([7, 77, 777]);
         }
 
         [Fact]

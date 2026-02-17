@@ -8,7 +8,9 @@ namespace CSharpFunctionalExtensions
         public static async Task<Result<T>> OnFailureCompensate<T>(this Result<T> result, Func<Task<Result<T>>> func)
         {
             if (result.IsFailure)
+            {
                 return await func().DefaultAwait();
+            }
 
             return result;
         }
@@ -16,7 +18,9 @@ namespace CSharpFunctionalExtensions
         public static async Task<Result<T, E>> OnFailureCompensate<T, E>(this Result<T, E> result, Func<Task<Result<T, E>>> func)
         {
             if (result.IsFailure)
+            {
                 return await func().DefaultAwait();
+            }
 
             return result;
         }
@@ -24,7 +28,9 @@ namespace CSharpFunctionalExtensions
         public static async Task<Result> OnFailureCompensate(this Result result, Func<Task<Result>> func)
         {
             if (result.IsFailure)
+            {
                 return await func().DefaultAwait();
+            }
 
             return result;
         }
@@ -32,7 +38,9 @@ namespace CSharpFunctionalExtensions
         public static async Task<Result<T>> OnFailureCompensate<T>(this Result<T> result, Func<string, Task<Result<T>>> func)
         {
             if (result.IsFailure)
+            {
                 return await func(result.Error).DefaultAwait();
+            }
 
             return result;
         }
@@ -41,7 +49,9 @@ namespace CSharpFunctionalExtensions
             Func<E, Task<Result<T, E>>> func)
         {
             if (result.IsFailure)
+            {
                 return await func(result.Error).DefaultAwait();
+            }
 
             return result;
         }
@@ -49,7 +59,9 @@ namespace CSharpFunctionalExtensions
         public static async Task<Result> OnFailureCompensate(this Result result, Func<string, Task<Result>> func)
         {
             if (result.IsFailure)
+            {
                 return await func(result.Error).DefaultAwait();
+            }
 
             return result;
         }

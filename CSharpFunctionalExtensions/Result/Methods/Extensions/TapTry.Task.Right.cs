@@ -16,7 +16,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess)
+                {
                     await func().DefaultAwait();
+                }
 
                 return result;
             }
@@ -38,7 +40,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess)
+                {
                     await func().DefaultAwait();
+                }
 
                 return result;
             }
@@ -60,7 +64,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess)
+                {
                     await func(result.Value).DefaultAwait();
+                }
 
                 return result;
             }
@@ -80,7 +86,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess)
+                {
                     await func().DefaultAwait();
+                }
 
                 return result;
             }
@@ -100,7 +108,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess)
+                {
                     await func().DefaultAwait();
+                }
 
                 return result;
             }
@@ -120,7 +130,9 @@ namespace CSharpFunctionalExtensions
             try
             {
                 if (result.IsSuccess)
+                {
                     await func(result.Value).DefaultAwait();
+                }
 
                 return result;
             }

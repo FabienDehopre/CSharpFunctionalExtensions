@@ -53,7 +53,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests
                 _errors = errors ?? throw new ArgumentNullException(nameof(errors));
             }
 
-            public IReadOnlyCollection<string> Errors => _errors;
+            public IReadOnlyCollection<string> Errors => _errors.AsReadOnly();
 
             public ICombine Combine(ICombine value)
             {

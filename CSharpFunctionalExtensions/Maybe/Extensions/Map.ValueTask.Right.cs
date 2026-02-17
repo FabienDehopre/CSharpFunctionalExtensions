@@ -1,5 +1,4 @@
-﻿#if NET5_0_OR_GREATER
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace CSharpFunctionalExtensions.ValueTasks
@@ -12,7 +11,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
         )
         {
             if (maybe.HasNoValue)
+            {
                 return Maybe<K>.None;
+            }
 
             return await valueTask(maybe.GetValueOrThrow());
         }
@@ -24,10 +25,11 @@ namespace CSharpFunctionalExtensions.ValueTasks
         )
         {
             if (maybe.HasNoValue)
+            {
                 return Maybe<K>.None;
+            }
 
             return await valueTask(maybe.GetValueOrThrow(), context);
         }
     }
 }
-#endif

@@ -1,4 +1,3 @@
-#if NETSTANDARD2_0 || NET5_0_OR_GREATER
 using System;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -47,7 +46,6 @@ namespace CSharpFunctionalExtensions
     }
 }
 
-#if NET5_0_OR_GREATER
 namespace CSharpFunctionalExtensions.ValueTasks
 {
     public static partial class ResultExtensions
@@ -68,5 +66,4 @@ namespace CSharpFunctionalExtensions.ValueTasks
         }
     }
 }
-    #endif
-#endif
+

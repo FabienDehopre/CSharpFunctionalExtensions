@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Threading.Tasks;
+using FluentAssertions;
 using CSharpFunctionalExtensions.ValueTasks;
 using Xunit;
 
@@ -11,11 +12,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_executes_action_conditionally_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_executes_action_conditionally_and_returns_self(bool isSuccess, bool condition)
         {
             Result result = Result.SuccessIf(isSuccess, ErrorMessage);
 
-            var returned = result.AsValueTask().TapErrorIf(condition, ValueTask_Action).Result;
+            var returned = await result.AsValueTask().TapErrorIf(condition, ValueTask_Action);
 
             actionExecuted.Should().Be(!isSuccess && condition);
             result.Should().Be(returned);
@@ -26,11 +27,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_executes_action_String_conditionally_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_executes_action_String_conditionally_and_returns_self(bool isSuccess, bool condition)
         {
             Result result = Result.SuccessIf(isSuccess, ErrorMessage);
 
-            var returned = result.AsValueTask().TapErrorIf(condition, ValueTask_Action_String).Result;
+            var returned = await result.AsValueTask().TapErrorIf(condition, ValueTask_Action_String);
 
             actionExecuted.Should().Be(!isSuccess && condition);
             result.Should().Be(returned);
@@ -41,11 +42,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_T_executes_action_conditionally_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_T_executes_action_conditionally_and_returns_self(bool isSuccess, bool condition)
         {
             Result<T> result = Result.SuccessIf(isSuccess, T.Value, ErrorMessage);
 
-            var returned = result.AsValueTask().TapErrorIf(condition, ValueTask_Action).Result;
+            var returned = await result.AsValueTask().TapErrorIf(condition, ValueTask_Action);
 
             actionExecuted.Should().Be(!isSuccess && condition);
             result.Should().Be(returned);
@@ -56,11 +57,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_T_executes_action_T_conditionally_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_T_executes_action_T_conditionally_and_returns_self(bool isSuccess, bool condition)
         {
             Result<T> result = Result.SuccessIf(isSuccess, T.Value, ErrorMessage);
 
-            var returned = result.AsValueTask().TapErrorIf(condition, ValueTask_Action_String).Result;
+            var returned = await result.AsValueTask().TapErrorIf(condition, ValueTask_Action_String);
 
             actionExecuted.Should().Be(!isSuccess && condition);
             result.Should().Be(returned);
@@ -71,11 +72,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_T_E_executes_action_conditionally_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_T_E_executes_action_conditionally_and_returns_self(bool isSuccess, bool condition)
         {
             Result<T, E> result = Result.SuccessIf(isSuccess, T.Value, E.Value);
 
-            var returned = result.AsValueTask().TapErrorIf(condition, ValueTask_Action).Result;
+            var returned = await result.AsValueTask().TapErrorIf(condition, ValueTask_Action);
 
             actionExecuted.Should().Be(!isSuccess && condition);
             result.Should().Be(returned);
@@ -86,11 +87,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_T_E_executes_action_T_conditionally_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_T_E_executes_action_T_conditionally_and_returns_self(bool isSuccess, bool condition)
         {
             Result<T, E> result = Result.SuccessIf(isSuccess, T.Value, E.Value);
 
-            var returned = result.AsValueTask().TapErrorIf(condition, ValueTask_Action_E).Result;
+            var returned = await result.AsValueTask().TapErrorIf(condition, ValueTask_Action_E);
 
             actionExecuted.Should().Be(!isSuccess && condition);
             result.Should().Be(returned);
@@ -101,11 +102,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_E_executes_action_conditionally_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_E_executes_action_conditionally_and_returns_self(bool isSuccess, bool condition)
         {
             UnitResult<E> result = UnitResult.SuccessIf(isSuccess, E.Value);
 
-            var returned = result.AsValueTask().TapErrorIf(condition, ValueTask_Action).Result;
+            var returned = await result.AsValueTask().TapErrorIf(condition, ValueTask_Action);
 
             actionExecuted.Should().Be(!isSuccess && condition);
             result.Should().Be(returned);
@@ -116,11 +117,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_E_executes_action_T_conditionally_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_E_executes_action_T_conditionally_and_returns_self(bool isSuccess, bool condition)
         {
             UnitResult<E> result = UnitResult.SuccessIf(isSuccess, E.Value);
 
-            var returned = result.AsValueTask().TapErrorIf(condition, ValueTask_Action_E).Result;
+            var returned = await result.AsValueTask().TapErrorIf(condition, ValueTask_Action_E);
 
             actionExecuted.Should().Be(!isSuccess && condition);
             result.Should().Be(returned);
@@ -131,11 +132,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_executes_action_per_predicate_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_executes_action_per_predicate_and_returns_self(bool isSuccess, bool condition)
         {
             Result result = Result.SuccessIf(isSuccess, ErrorMessage);
 
-            var returned = result.AsValueTask().TapErrorIf(Predicate_String(condition), ValueTask_Action).Result;
+            var returned = await result.AsValueTask().TapErrorIf(Predicate_String(condition), ValueTask_Action);
 
             predicateExecuted.Should().Be(!isSuccess);
             actionExecuted.Should().Be(!isSuccess && condition);
@@ -147,11 +148,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_executes_action_String_per_predicate_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_executes_action_String_per_predicate_and_returns_self(bool isSuccess, bool condition)
         {
             Result result = Result.SuccessIf(isSuccess, ErrorMessage);
 
-            var returned = result.AsValueTask().TapErrorIf(Predicate_String(condition), ValueTask_Action_String).Result;
+            var returned = await result.AsValueTask().TapErrorIf(Predicate_String(condition), ValueTask_Action_String);
 
             predicateExecuted.Should().Be(!isSuccess);
             actionExecuted.Should().Be(!isSuccess && condition);
@@ -163,11 +164,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_T_executes_action_per_predicate_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_T_executes_action_per_predicate_and_returns_self(bool isSuccess, bool condition)
         {
             Result<T> result = Result.SuccessIf(isSuccess, T.Value, ErrorMessage);
 
-            var returned = result.AsValueTask().TapErrorIf(Predicate_String(condition), ValueTask_Action).Result;
+            var returned = await result.AsValueTask().TapErrorIf(Predicate_String(condition), ValueTask_Action);
 
             predicateExecuted.Should().Be(!isSuccess);
             actionExecuted.Should().Be(!isSuccess && condition);
@@ -179,11 +180,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_T_executes_action_String_per_predicate_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_T_executes_action_String_per_predicate_and_returns_self(bool isSuccess, bool condition)
         {
             Result<T> result = Result.SuccessIf(isSuccess, T.Value, ErrorMessage);
 
-            var returned = result.AsValueTask().TapErrorIf(Predicate_String(condition), ValueTask_Action_String).Result;
+            var returned = await result.AsValueTask().TapErrorIf(Predicate_String(condition), ValueTask_Action_String);
 
             predicateExecuted.Should().Be(!isSuccess);
             actionExecuted.Should().Be(!isSuccess && condition);
@@ -195,11 +196,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_T_E_executes_action_per_predicate_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_T_E_executes_action_per_predicate_and_returns_self(bool isSuccess, bool condition)
         {
             Result<T, E> result = Result.SuccessIf(isSuccess, T.Value, E.Value);
 
-            var returned = result.AsValueTask().TapErrorIf(Predicate_E(condition), ValueTask_Action).Result;
+            var returned = await result.AsValueTask().TapErrorIf(Predicate_E(condition), ValueTask_Action);
 
             predicateExecuted.Should().Be(!isSuccess);
             actionExecuted.Should().Be(!isSuccess && condition);
@@ -211,11 +212,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_T_E_executes_action_E_per_predicate_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_T_E_executes_action_E_per_predicate_and_returns_self(bool isSuccess, bool condition)
         {
             Result<T, E> result = Result.SuccessIf(isSuccess, T.Value, E.Value);
 
-            var returned = result.AsValueTask().TapErrorIf(Predicate_E(condition), ValueTask_Action_E).Result;
+            var returned = await result.AsValueTask().TapErrorIf(Predicate_E(condition), ValueTask_Action_E);
 
             predicateExecuted.Should().Be(!isSuccess);
             actionExecuted.Should().Be(!isSuccess && condition);
@@ -227,11 +228,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_E_executes_action_per_predicate_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_E_executes_action_per_predicate_and_returns_self(bool isSuccess, bool condition)
         {
             UnitResult<E> result = UnitResult.SuccessIf(isSuccess, E.Value);
 
-            var returned = result.AsValueTask().TapErrorIf(Predicate_E(condition), ValueTask_Action).Result;
+            var returned = await result.AsValueTask().TapErrorIf(Predicate_E(condition), ValueTask_Action);
 
             predicateExecuted.Should().Be(!isSuccess);
             actionExecuted.Should().Be(!isSuccess && condition);
@@ -243,11 +244,11 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void TapErrorIf_ValueTask_E_executes_action_E_per_predicate_and_returns_self(bool isSuccess, bool condition)
+        public async Task TapErrorIf_ValueTask_E_executes_action_E_per_predicate_and_returns_self(bool isSuccess, bool condition)
         {
             UnitResult<E> result = UnitResult.SuccessIf(isSuccess, E.Value);
 
-            var returned = result.AsValueTask().TapErrorIf(Predicate_E(condition), ValueTask_Action_E).Result;
+            var returned = await result.AsValueTask().TapErrorIf(Predicate_E(condition), ValueTask_Action_E);
 
             predicateExecuted.Should().Be(!isSuccess);
             actionExecuted.Should().Be(!isSuccess && condition);

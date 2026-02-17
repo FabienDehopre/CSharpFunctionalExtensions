@@ -57,10 +57,14 @@ namespace CSharpFunctionalExtensions
         public override bool Equals(object obj)
         {
             if (obj == null)
+            {
                 return false;
+            }
 
             if (GetUnproxiedType(this) != GetUnproxiedType(obj))
+            {
                 return false;
+            }
 
             var enumValueObject = (EnumValueObject<TEnumeration, TId>)obj;
 
@@ -99,11 +103,7 @@ namespace CSharpFunctionalExtensions
         }
 
 
-#if NET40
-        public static ICollection<TEnumeration> All = EnumerationsById.Values.OfType<TEnumeration>().ToList();
-#else
-        public static IReadOnlyCollection<TEnumeration> All = EnumerationsById.Values.OfType<TEnumeration>().ToList();
-#endif
+        public static IReadOnlyCollection<TEnumeration> All = EnumerationsById.Values.OfType<TEnumeration>().ToList().AsReadOnly();
 
         public static bool Is(string possibleName) => All.Select(e => e.Name).Contains(possibleName);
 
@@ -145,11 +145,7 @@ namespace CSharpFunctionalExtensions
             Id = id;
         }
 
-#if NET40
-        public static ICollection<TEnumeration> All = Enumerations.Values.OfType<TEnumeration>().ToList();
-#else
-        public static IReadOnlyCollection<TEnumeration> All = Enumerations.Values.OfType<TEnumeration>().ToList();
-#endif
+        public static IReadOnlyCollection<TEnumeration> All = Enumerations.Values.OfType<TEnumeration>().ToList().AsReadOnly();
 
         public virtual string Id { get; protected set; }
         
@@ -186,10 +182,14 @@ namespace CSharpFunctionalExtensions
         public override bool Equals(object obj)
         {
             if (obj == null)
+            {
                 return false;
+            }
 
             if (GetUnproxiedType(this) != GetUnproxiedType(obj))
+            {
                 return false;
+            }
 
             var enumValueObject = (EnumValueObject<TEnumeration>)obj;
 

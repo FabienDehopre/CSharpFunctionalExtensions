@@ -1,4 +1,4 @@
-﻿#if NETCOREAPP3_0_OR_GREATER
+﻿#nullable enable
 using System.Threading.Tasks;
 
 namespace CSharpFunctionalExtensions
@@ -10,7 +10,9 @@ namespace CSharpFunctionalExtensions
             where T : struct
         {
             if (!nullable.HasValue)
+            {
                 return Result.Failure<T, E>(error);
+            }
 
             return Result.Success<T, E>(nullable.Value);
         }
@@ -18,7 +20,9 @@ namespace CSharpFunctionalExtensions
             where T : class
         {
             if (obj == null)
+            {
                 return Result.Failure<T, E>(error);
+            }
 
             return Result.Success<T, E>(obj);
         }
@@ -52,5 +56,3 @@ namespace CSharpFunctionalExtensions
         }
     }
 }
-
-#endif

@@ -1,4 +1,3 @@
-#if NET5_0_OR_GREATER
 using System;
 using System.Threading.Tasks;
 
@@ -14,10 +13,14 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return result;
+            }
 
             if (!await valueTaskPredicate(result.Value))
+            {
                 return Result.Failure<T>(errorMessage);
+            }
 
             return result;
         }
@@ -30,10 +33,14 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return result;
+            }
 
             if (!await valueTaskPredicate(result.Value))
+            {
                 return Result.Failure<T, E>(error);
+            }
 
             return result;
         }
@@ -46,10 +53,14 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return result;
+            }
 
             if (!await valueTaskPredicate(result.Value))
+            {
                 return Result.Failure<T, E>(valueTaskErrorPredicate(result.Value));
+            }
 
             return result;
         }
@@ -62,10 +73,14 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return result;
+            }
 
             if (!await valueTaskPredicate(result.Value))
+            {
                 return Result.Failure<T, E>(await valueTaskErrorPredicate(result.Value));
+            }
 
             return result;
         }
@@ -78,10 +93,14 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return result;
+            }
 
             if (!await predicateValueTask(result.Value))
+            {
                 return Result.Failure<T>(valueTaskErrorPredicate(result.Value));
+            }
 
             return result;
         }
@@ -94,10 +113,14 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return result;
+            }
 
             if (!await valueTaskPredicate(result.Value))
+            {
                 return Result.Failure<T>(await valueTaskErrorPredicate(result.Value));
+            }
 
             return result;
         }
@@ -110,10 +133,14 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return result;
+            }
 
             if (!await valueTaskPredicate())
+            {
                 return Result.Failure(errorMessage);
+            }
 
             return result;
         }
@@ -126,12 +153,16 @@ namespace CSharpFunctionalExtensions.ValueTasks
           Result result = await resultTask;
           
           if (result.IsFailure)
-            return result;
+          {
+              return result;
+          }
 
           var predicateResult = await valueTaskPredicate();
           
           if (predicateResult.IsFailure)
-            return Result.Failure(predicateResult.Error);
+          {
+              return Result.Failure(predicateResult.Error);
+          }
 
           return result;
         }
@@ -144,12 +175,16 @@ namespace CSharpFunctionalExtensions.ValueTasks
           Result<T> result = await resultTask;
           
           if (result.IsFailure)
-            return result;
+          {
+              return result;
+          }
 
           var predicateResult = await valueTaskPredicate();
           
           if (predicateResult.IsFailure)
-            return Result.Failure<T>(predicateResult.Error);
+          {
+              return Result.Failure<T>(predicateResult.Error);
+          }
 
           return result;
         }
@@ -162,12 +197,16 @@ namespace CSharpFunctionalExtensions.ValueTasks
           Result result = await resultTask;
           
           if (result.IsFailure)
-            return result;
+          {
+              return result;
+          }
 
           var predicateResult = await valueTaskPredicate();
           
           if (predicateResult.IsFailure)
-            return Result.Failure<T>(predicateResult.Error);
+          {
+              return Result.Failure<T>(predicateResult.Error);
+          }
 
           return result;
         }
@@ -180,13 +219,17 @@ namespace CSharpFunctionalExtensions.ValueTasks
           Result<T> result = await resultTask;
           
           if (result.IsFailure)
-            return result;
-        
+          {
+              return result;
+          }
+
           var predicateResult = await valueTaskPredicate();
           
           if (predicateResult.IsFailure)
-            return Result.Failure<T>(predicateResult.Error);
-        
+          {
+              return Result.Failure<T>(predicateResult.Error);
+          }
+
           return result;
         }
         
@@ -198,12 +241,16 @@ namespace CSharpFunctionalExtensions.ValueTasks
           Result<T> result = await resultTask;
           
           if (result.IsFailure)
-            return result;
+          {
+              return result;
+          }
 
           var predicateResult = await valueTaskPredicate(result.Value);
           
           if (predicateResult.IsFailure)
-            return Result.Failure<T>(predicateResult.Error);
+          {
+              return Result.Failure<T>(predicateResult.Error);
+          }
 
           return result;
         }
@@ -216,15 +263,18 @@ namespace CSharpFunctionalExtensions.ValueTasks
           Result<T> result = await resultTask;
           
           if (result.IsFailure)
-            return result;
+          {
+              return result;
+          }
 
           var predicateResult = await valueTaskPredicate(result.Value);
           
           if (predicateResult.IsFailure)
-            return Result.Failure<T>(predicateResult.Error);
+          {
+              return Result.Failure<T>(predicateResult.Error);
+          }
 
           return result;
         }
     }
 }
-#endif

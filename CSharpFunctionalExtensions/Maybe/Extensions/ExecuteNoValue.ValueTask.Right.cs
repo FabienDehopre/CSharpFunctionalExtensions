@@ -1,5 +1,4 @@
-﻿#if NET5_0_OR_GREATER
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace CSharpFunctionalExtensions.ValueTasks
@@ -15,10 +14,11 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static async Task ExecuteNoValue<T>(this Maybe<T> maybe, Func<ValueTask> valueTask)
         {
             if (maybe.HasValue)
+            {
                 return;
+            }
 
             await valueTask();
         }
     }
 }
-#endif

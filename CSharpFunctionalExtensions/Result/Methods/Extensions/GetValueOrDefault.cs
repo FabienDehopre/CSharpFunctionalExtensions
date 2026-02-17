@@ -10,7 +10,9 @@ namespace CSharpFunctionalExtensions
         public static T GetValueOrDefault<T>(in this Result<T> result, Func<T> defaultValue)
         {
             if (result.IsFailure)
+            {
                 return defaultValue();
+            }
 
             return result.Value;
         }
@@ -21,7 +23,9 @@ namespace CSharpFunctionalExtensions
         public static K GetValueOrDefault<T, K>(in this Result<T> result, Func<T, K> selector, K defaultValue = default)
         {
             if (result.IsFailure)
+            {
                 return defaultValue;
+            }
 
             return selector(result.Value);
         }
@@ -32,7 +36,9 @@ namespace CSharpFunctionalExtensions
         public static K GetValueOrDefault<T, K>(in this Result<T> result, Func<T, K> selector, Func<K> defaultValue)
         {
             if (result.IsFailure)
+            {
                 return defaultValue();
+            }
 
             return selector(result.Value);
         }

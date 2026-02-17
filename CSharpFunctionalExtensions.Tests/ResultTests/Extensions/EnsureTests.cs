@@ -79,7 +79,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
             Result<int?> result = await sut.Ensure(value => !value.HasValue,
                 value => Task.FromResult($"should be null but found {value.Value}"));
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -89,7 +89,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result result = await sut.Ensure(() => true, string.Empty);
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -99,7 +99,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result result = await sut.Ensure(() => false, "predicate problems");
 
-            result.Should().NotBe(sut.Result);
+            result.Should().NotBe(await sut);
             result.IsFailure.Should().BeTrue();
             result.Error.Should().Be("predicate problems");
         }
@@ -111,7 +111,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result result = await sut.Ensure(() => true, string.Empty);
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -121,7 +121,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result result = await sut.Ensure(() => Task.FromResult(false), string.Empty);
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -131,7 +131,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result result = await sut.Ensure(() => Task.FromResult(false), "predicate problems");
 
-            result.Should().NotBe(sut.Result);
+            result.Should().NotBe(await sut);
             result.IsFailure.Should().BeTrue();
             result.Error.Should().Be("predicate problems");
         }
@@ -143,7 +143,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result result = await sut.Ensure(() => Task.FromResult(true), string.Empty);
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -221,7 +221,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result<TimeSpan> result = await sut.Ensure(t => Task.FromResult(true), "test ensure error");
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -245,7 +245,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result<double> result = await sut.Ensure(d => Task.FromResult(true), "test error");
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -256,7 +256,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result<TimeSpan> result = await sut.Ensure(t => true, "test ensure error");
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -280,7 +280,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result<double> result = await sut.Ensure(d => true, "test error");
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -327,7 +327,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result<DateTime, Error> result = await sut.Ensure(d => Task.FromResult(true), new Error());
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -339,7 +339,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result<int, Error> result = await sut.Ensure(i => Task.FromResult(false), error);
 
-            result.Should().NotBe(sut.Result);
+            result.Should().NotBe(await sut);
             result.IsFailure.Should().BeTrue();
             result.Error.Should().Be(error);
         }
@@ -352,7 +352,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result<decimal, Error> result = await sut.Ensure(d => Task.FromResult(true), new Error());
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -363,7 +363,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result<TimeSpan, Error> result = await sut.Ensure(t => true, new Error());
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]
@@ -375,7 +375,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result<byte, Error> result = await sut.Ensure(b => false, error);
 
-            result.Should().NotBe(sut.Result);
+            result.Should().NotBe(await sut);
             result.IsFailure.Should().BeTrue();
             result.Error.Should().Be(error);
         }
@@ -388,7 +388,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
 
             Result<double, Error> result = await sut.Ensure(d => true, new Error());
 
-            result.Should().Be(sut.Result);
+            result.Should().Be(await sut);
         }
 
         [Fact]

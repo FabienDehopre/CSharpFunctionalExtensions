@@ -1,4 +1,3 @@
-#if NET5_0_OR_GREATER
 using System;
 using System.Threading.Tasks;
 
@@ -17,7 +16,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await valueTask(result.Value);
 
@@ -36,7 +37,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await valueTask(result.Value, context);
 
@@ -54,7 +57,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             UnitResult<E> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await valueTask();
 
@@ -73,7 +78,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             UnitResult<E> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await valueTask(context);
 
@@ -91,7 +98,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await valueTask(result.Value);
 
@@ -110,7 +119,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await valueTask(result.Value, context);
 
@@ -128,7 +139,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await valueTask();
 
@@ -147,7 +160,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await valueTask(context);
 
@@ -155,4 +170,3 @@ namespace CSharpFunctionalExtensions.ValueTasks
         }
     }
 }
-#endif

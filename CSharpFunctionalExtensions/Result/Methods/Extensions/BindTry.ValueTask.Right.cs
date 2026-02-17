@@ -1,5 +1,4 @@
-﻿#if NET5_0_OR_GREATER
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System;
 
 namespace CSharpFunctionalExtensions.ValueTasks
@@ -147,4 +146,3 @@ namespace CSharpFunctionalExtensions.ValueTasks
         }
     }
 }
-#endif

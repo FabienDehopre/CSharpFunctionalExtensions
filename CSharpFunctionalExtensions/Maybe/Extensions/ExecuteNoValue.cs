@@ -13,7 +13,9 @@ namespace CSharpFunctionalExtensions
         public static void ExecuteNoValue<T>(in this Maybe<T> maybe, Action action)
         {
             if (maybe.HasValue)
+            {
                 return;
+            }
 
             action();
         }

@@ -1,5 +1,4 @@
-﻿#if NET5_0_OR_GREATER
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace CSharpFunctionalExtensions.ValueTasks
@@ -59,10 +58,11 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Maybe<T> maybe = await maybeTask;
 
             if (maybe.HasNoValue)
+            {
                 return await fallbackOperation();
+            }
 
             return maybe;
         }
     }
 }
-#endif

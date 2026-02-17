@@ -10,7 +10,10 @@ namespace CSharpFunctionalExtensions
         {
             source = source as ICollection<T> ?? source.ToList();
 
-            if (source.Any()) return Maybe<T>.From(source.First());
+            if (source.Any())
+            {
+                return Maybe<T>.From(source.First());
+            }
 
             return Maybe<T>.None;
         }
@@ -18,7 +21,10 @@ namespace CSharpFunctionalExtensions
         public static Maybe<T> TryFirst<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
             var firstOrEmpty = source.Where(predicate).Take(1).ToList();
-            if (firstOrEmpty.Any()) return Maybe<T>.From(firstOrEmpty[0]);
+            if (firstOrEmpty.Any())
+            {
+                return Maybe<T>.From(firstOrEmpty[0]);
+            }
 
             return Maybe<T>.None;
         }

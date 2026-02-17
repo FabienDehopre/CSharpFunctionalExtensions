@@ -16,10 +16,14 @@ namespace CSharpFunctionalExtensions
             var valueObject = obj as T;
 
             if (valueObject is null)
+            {
                 return false;
+            }
 
             if (ValueObject.GetUnproxiedType(this) != ValueObject.GetUnproxiedType(obj))
+            {
                 return false;
+            }
 
             return EqualsCore(valueObject);
         }
@@ -41,10 +45,14 @@ namespace CSharpFunctionalExtensions
         public static bool operator ==(ValueObject<T> a, ValueObject<T> b)
         {
             if (a is null && b is null)
+            {
                 return true;
+            }
 
             if (a is null || b is null)
+            {
                 return false;
+            }
 
             return a.Equals(b);
         }

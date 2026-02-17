@@ -14,7 +14,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await func(result.Value).DefaultAwait();
 
@@ -31,7 +33,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await func(result.Value, context).DefaultAwait();
 
@@ -47,7 +51,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await func().DefaultAwait();
 
@@ -64,7 +70,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<K, E>(result.Error);
+            }
 
             K value = await func(context).DefaultAwait();
 
@@ -77,7 +85,9 @@ namespace CSharpFunctionalExtensions
         public static async Task<Result<K>> Map<T, K>(this Result<T> result, Func<T, Task<K>> func)
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await func(result.Value).DefaultAwait();
 
@@ -94,7 +104,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await func(result.Value, context).DefaultAwait();
 
@@ -110,7 +122,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             Result<K> value = await func(result.Value).DefaultAwait();
             return value;
@@ -126,7 +140,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             Result<K> value = await func(result.Value, context).DefaultAwait();
             return value;
@@ -138,7 +154,9 @@ namespace CSharpFunctionalExtensions
         public static async Task<Result<K>> Map<K>(this Result result, Func<Task<K>> func)
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await func().DefaultAwait();
 
@@ -155,7 +173,9 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (result.IsFailure)
+            {
                 return Result.Failure<K>(result.Error);
+            }
 
             K value = await func(context).DefaultAwait();
 

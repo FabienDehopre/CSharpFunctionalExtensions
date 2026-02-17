@@ -63,12 +63,16 @@ namespace CSharpFunctionalExtensions.Internal
             if (isFailure)
             {
                 if (error == null || (error is string && error.Equals(string.Empty)))
+                {
                     throw new ArgumentNullException(nameof(error), Result.Messages.ErrorObjectIsNotProvidedForFailure);
+                }
             }
             else
             {
                 if (!EqualityComparer<E>.Default.Equals(error, default))
+                {
                     throw new ArgumentException(Result.Messages.ErrorObjectIsProvidedForSuccess, nameof(error));
+                }
             }
 
             return isFailure;

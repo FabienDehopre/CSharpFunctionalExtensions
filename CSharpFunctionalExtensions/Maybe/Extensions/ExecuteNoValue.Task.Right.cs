@@ -14,7 +14,9 @@ namespace CSharpFunctionalExtensions
         public static async Task ExecuteNoValue<T>(this Maybe<T> maybe, Func<Task> action)
         {
             if (maybe.HasValue)
+            {
                 return;
+            }
 
             await action().DefaultAwait();
         }

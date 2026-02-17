@@ -16,7 +16,9 @@ namespace CSharpFunctionalExtensions
         public static async Task<Maybe<T>> Or<T>(this Maybe<T> maybe, Func<Task<T>> fallbackOperation)
         {
             if (maybe.HasNoValue)
+            {
                 return await fallbackOperation().DefaultAwait();
+            }
 
             return maybe;
         }
@@ -32,7 +34,9 @@ namespace CSharpFunctionalExtensions
         public static async Task<Maybe<T>> Or<T>(this Maybe<T> maybe, Task<Maybe<T>> fallback)
         {
             if (maybe.HasNoValue)
+            {
                 return await fallback.DefaultAwait();
+            }
 
             return maybe;
         }
@@ -48,7 +52,9 @@ namespace CSharpFunctionalExtensions
         public static async Task<Maybe<T>> Or<T>(this Maybe<T> maybe, Func<Task<Maybe<T>>> fallbackOperation)
         {
             if (maybe.HasNoValue)
+            {
                 return await fallbackOperation().DefaultAwait();
+            }
 
             return maybe;
         }

@@ -54,9 +54,13 @@ namespace CSharpFunctionalExtensions
         public static void Match<T, E>(this Result<T, E> result, Action<T> onSuccess, Action<E> onFailure)
         {
             if (result.IsSuccess)
+            {
                 onSuccess(result.Value);
+            }
             else
+            {
                 onFailure(result.Error);
+            }
         }
 
         /// <summary>
@@ -66,9 +70,13 @@ namespace CSharpFunctionalExtensions
         public static void Match<E>(this UnitResult<E> result, Action onSuccess, Action<E> onFailure)
         {
             if (result.IsSuccess)
+            {
                 onSuccess();
+            }
             else
+            {
                 onFailure(result.Error);
+            }
         }
 
         /// <summary>
@@ -77,9 +85,13 @@ namespace CSharpFunctionalExtensions
         public static void Match<T>(this Result<T> result, Action<T> onSuccess, Action<string> onFailure)
         {
             if (result.IsSuccess)
+            {
                 onSuccess(result.Value);
+            }
             else
+            {
                 onFailure(result.Error);
+            }
         }
 
         /// <summary>
@@ -89,9 +101,13 @@ namespace CSharpFunctionalExtensions
         public static void Match(this Result result, Action onSuccess, Action<string> onFailure)
         {
             if (result.IsSuccess)
+            {
                 onSuccess();
+            }
             else
+            {
                 onFailure(result.Error);
+            }
         }
     }
 }

@@ -15,7 +15,9 @@ namespace CSharpFunctionalExtensions
         public static Maybe<T> Or<T>(in this Maybe<T> maybe, Func<T> fallbackOperation)
         {
             if (maybe.HasNoValue)
+            {
                 return fallbackOperation();
+            }
 
             return maybe;
         }
@@ -31,7 +33,9 @@ namespace CSharpFunctionalExtensions
         public static Maybe<T> Or<T>(in this Maybe<T> maybe, Maybe<T> fallback)
         {
             if (maybe.HasNoValue)
+            {
                 return fallback;
+            }
 
             return maybe;
         }
@@ -47,7 +51,9 @@ namespace CSharpFunctionalExtensions
         public static Maybe<T> Or<T>(in this Maybe<T> maybe, Func<Maybe<T>> fallbackOperation)
         {
             if (maybe.HasNoValue)
+            {
                 return fallbackOperation();
+            }
 
             return maybe;
         }

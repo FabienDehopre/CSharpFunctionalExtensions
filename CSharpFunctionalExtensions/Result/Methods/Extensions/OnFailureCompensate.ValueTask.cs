@@ -1,4 +1,3 @@
-#if NET5_0_OR_GREATER
 using System;
 using System.Threading.Tasks;
 
@@ -12,7 +11,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return await valueTask();
+            }
 
             return result;
         }
@@ -22,7 +23,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return await valueTask();
+            }
 
             return result;
         }
@@ -32,7 +35,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return await valueTask();
+            }
 
             return result;
         }
@@ -43,7 +48,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return await valueTask(result.Error);
+            }
 
             return result;
         }
@@ -54,7 +61,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsFailure)
+            {
                 return await valueTask(result.Error);
+            }
 
             return result;
         }
@@ -64,10 +73,11 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result result = await resultTask;
             
             if (result.IsFailure)
+            {
                 return await valueTask(result.Error);
+            }
 
             return result;
         }
     }
 }
-#endif

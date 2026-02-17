@@ -118,8 +118,8 @@ namespace CSharpFunctionalExtensions.Tests.ValueObjectTests
             int result1 = intValueObject.CompareTo(stringValueObject);
             int result2 = stringValueObject.CompareTo(intValueObject);
 
-            result1.Should().BeLessOrEqualTo(-1);
-            result2.Should().BeGreaterOrEqualTo(-1);
+            result1.Should().BeLessThanOrEqualTo(-1);
+            result2.Should().BeGreaterThanOrEqualTo(-1);
             result1.Should().Be(-result2);
         }
 

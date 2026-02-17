@@ -15,15 +15,21 @@ namespace CSharpFunctionalExtensions
         public virtual int CompareTo(ComparableValueObject other)
         {
             if (other is null)
+            {
                 return 1;
+            }
 
             if (ReferenceEquals(this, other))
+            {
                 return 0;
+            }
 
             Type thisType = GetUnproxiedType(this);
             Type otherType = GetUnproxiedType(other);
             if (thisType != otherType)
+            {
                 return string.Compare($"{thisType}", $"{otherType}", StringComparison.Ordinal);
+            }
 
             return
                 GetComparableEqualityComponents().Zip(

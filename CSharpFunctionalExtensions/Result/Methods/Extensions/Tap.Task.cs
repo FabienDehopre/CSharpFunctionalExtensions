@@ -13,7 +13,9 @@ namespace CSharpFunctionalExtensions
             Result result = await resultTask.DefaultAwait();
 
             if (result.IsSuccess)
+            {
                 await func().DefaultAwait();
+            }
 
             return result;
         }
@@ -26,7 +28,9 @@ namespace CSharpFunctionalExtensions
             Result<T> result = await resultTask.DefaultAwait();
 
             if (result.IsSuccess)
+            {
                 await func().DefaultAwait();
+            }
 
             return result;
         }
@@ -39,7 +43,9 @@ namespace CSharpFunctionalExtensions
             Result<T> result = await resultTask.DefaultAwait();
 
             if (result.IsSuccess)
+            {
                 await func(result.Value).DefaultAwait();
+            }
 
             return result;
         }
@@ -52,7 +58,9 @@ namespace CSharpFunctionalExtensions
             UnitResult<E> result = await resultTask.DefaultAwait();
 
             if (result.IsSuccess)
+            {
                 await func().DefaultAwait();
+            }
 
             return result;
         }
@@ -65,7 +73,9 @@ namespace CSharpFunctionalExtensions
             Result<T, E> result = await resultTask.DefaultAwait();
 
             if (result.IsSuccess)
+            {
                 await func().DefaultAwait();
+            }
 
             return result;
         }
@@ -78,7 +88,9 @@ namespace CSharpFunctionalExtensions
             Result<T, E> result = await resultTask.DefaultAwait();
 
             if (result.IsSuccess)
+            {
                 await func(result.Value).DefaultAwait();
+            }
 
             return result;
         }

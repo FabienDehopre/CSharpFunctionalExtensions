@@ -40,9 +40,13 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (maybe.HasValue)
+            {
                 await Some(maybe.GetValueOrThrow(), cancellationToken);
+            }
             else
+            {
                 await None(cancellationToken);
+            }
         }
 
         public static async Task Match<T, TContext>(
@@ -54,9 +58,13 @@ namespace CSharpFunctionalExtensions
         )
         {
             if (maybe.HasValue)
+            {
                 await Some(maybe.GetValueOrThrow(), context, cancellationToken);
+            }
             else
+            {
                 await None(context, cancellationToken);
+            }
         }
 
         public static async Task<TE> Match<TE, TKey, TValue>(

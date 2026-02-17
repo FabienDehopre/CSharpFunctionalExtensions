@@ -1,5 +1,4 @@
-﻿#if NET5_0_OR_GREATER
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace CSharpFunctionalExtensions.ValueTasks
@@ -16,7 +15,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static async ValueTask<Maybe<T>> Or<T>(this Maybe<T> maybe, Func<ValueTask<T>> valueTaskFallbackOperation)
         {
             if (maybe.HasNoValue)
+            {
                 return await valueTaskFallbackOperation();
+            }
 
             return maybe;
         }
@@ -31,7 +32,9 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static async ValueTask<Maybe<T>> Or<T>(this Maybe<T> maybe, ValueTask<Maybe<T>> valueTaskFallback)
         {
             if (maybe.HasNoValue)
+            {
                 return await valueTaskFallback;
+            }
 
             return maybe;
         }
@@ -46,10 +49,11 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static async ValueTask<Maybe<T>> Or<T>(this Maybe<T> maybe, Func<ValueTask<Maybe<T>>> valueTaskFallbackOperation)
         {
             if (maybe.HasNoValue)
+            {
                 return await valueTaskFallbackOperation();
+            }
 
             return maybe;
         }
     }
 }
-#endif

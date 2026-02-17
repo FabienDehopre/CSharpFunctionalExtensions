@@ -2,12 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-#if NET45_OR_GREATER || NETSTANDARD || NETCORE || NET5_0_OR_GREATER
 using System.Runtime.CompilerServices;
-#endif
-#if NET5_0_OR_GREATER
 using System.Diagnostics.CodeAnalysis;
-#endif
 
 namespace CSharpFunctionalExtensions
 {
@@ -26,7 +22,9 @@ namespace CSharpFunctionalExtensions
         public T GetValueOrThrow(string? errorMessage = null)
         {
             if (HasNoValue)
+            {
                 throw new InvalidOperationException(errorMessage ?? Configuration.NoValueException);
+            }
 
             return _value;
         }
@@ -38,7 +36,9 @@ namespace CSharpFunctionalExtensions
         public T GetValueOrThrow(Exception exception)
         {
             if (HasNoValue)
+            {
                 throw exception;
+            }
 
             return _value;
         }
@@ -46,7 +46,9 @@ namespace CSharpFunctionalExtensions
         public T GetValueOrDefault(T defaultValue)
         {
             if (HasNoValue)
+            {
                 return defaultValue;
+            }
 
             return _value;
         }
@@ -54,7 +56,9 @@ namespace CSharpFunctionalExtensions
         public T? GetValueOrDefault()
         {
             if (HasNoValue)
+            {
                 return default;
+            }
 
             return _value;
         }
@@ -63,13 +67,9 @@ namespace CSharpFunctionalExtensions
         ///  Indicates whether the inner value is present and returns the value if it is.
         /// </summary>
         /// <param name="value">The inner value, if present; otherwise `default`</param>
-#if NET45_OR_GREATER || NETSTANDARD || NETCORE || NET5_0_OR_GREATER
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public bool TryGetValue(
-#if NET5_0_OR_GREATER
             [NotNullWhen(true), MaybeNullWhen(false)]
-#endif
             out T? value)
         {
             value = _value;
@@ -83,14 +83,10 @@ namespace CSharpFunctionalExtensions
 
         public static Maybe<T> None => new Maybe<T>();
 
-#if NET5_0_OR_GREATER
         [MemberNotNullWhen(true, "_value")]
-#endif
         public bool HasValue => _isValueSet;
 
-#if NET5_0_OR_GREATER
         [MemberNotNullWhen(false, "_value")]
-#endif
         public bool HasNoValue => !HasValue;
 
         private Maybe(T? value)
@@ -147,10 +143,14 @@ namespace CSharpFunctionalExtensions
         public static bool operator ==(Maybe<T> maybe, T? value)
         {
             if (value is Maybe<T> maybeValue)
+            {
                 return maybe.Equals(maybeValue);
+            }
 
             if (maybe.HasNoValue)
+            {
                 return value == null;
+            }
 
             return maybe._value.Equals(value);
         }
@@ -183,13 +183,19 @@ namespace CSharpFunctionalExtensions
         public override bool Equals(object? obj)
         {
             if (obj == null)
+            {
                 return false;
+            }
 
             if (obj is Maybe<T> otherMaybe)
+            {
                 return Equals(otherMaybe);
+            }
 
             if (obj is T otherValue)
+            {
                 return Equals(otherValue);
+            }
 
             return false;
         }
@@ -197,10 +203,14 @@ namespace CSharpFunctionalExtensions
         public bool Equals(Maybe<T> other)
         {
             if (HasNoValue && other.HasNoValue)
+            {
                 return true;
+            }
 
             if (HasNoValue || other.HasNoValue)
+            {
                 return false;
+            }
 
             return EqualityComparer<T>.Default.Equals(_value, other._value);
         }
@@ -208,7 +218,9 @@ namespace CSharpFunctionalExtensions
         public override int GetHashCode()
         {
             if (HasNoValue)
+            {
                 return 0;
+            }
 
             return _value.GetHashCode();
         }
@@ -216,7 +228,9 @@ namespace CSharpFunctionalExtensions
         public override string ToString()
         {
             if (HasNoValue)
+            {
                 return "No value";
+            }
 
             return _value.ToString() ?? _value.GetType().Name;
         }

@@ -12,7 +12,10 @@ namespace CSharpFunctionalExtensions
                 while (enumerator.MoveNext())
                 {
                     var item = enumerator.Current;
-                    if (item.HasValue) yield return selector(item.GetValueOrThrow());
+                    if (item.HasValue)
+                    {
+                        yield return selector(item.GetValueOrThrow());
+                    }
                 }
             }
         }
@@ -24,7 +27,10 @@ namespace CSharpFunctionalExtensions
                 while (enumerator.MoveNext())
                 {
                     var item = enumerator.Current;
-                    if (item.HasValue) yield return item.GetValueOrThrow();
+                    if (item.HasValue)
+                    {
+                        yield return item.GetValueOrThrow();
+                    }
                 }
             }
         }

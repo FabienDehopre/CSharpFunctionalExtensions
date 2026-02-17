@@ -1,4 +1,3 @@
-#if NET5_0_OR_GREATER
 using System;
 using System.Threading.Tasks;
 
@@ -12,9 +11,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static ValueTask<Result> TapIf(this ValueTask<Result> resultTask, bool condition, Action action)
         {
             if (condition)
+            {
                 return resultTask.Tap(action);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -23,9 +26,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static ValueTask<Result<T>> TapIf<T>(this ValueTask<Result<T>> resultTask, bool condition, Action action)
         {
             if (condition)
+            {
                 return resultTask.Tap(action);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -34,9 +41,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static ValueTask<Result<T>> TapIf<T>(this ValueTask<Result<T>> resultTask, bool condition, Action<T> action)
         {
             if (condition)
+            {
                 return resultTask.Tap(action);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -45,9 +56,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static ValueTask<Result<T, E>> TapIf<T, E>(this ValueTask<Result<T, E>> resultTask, bool condition, Action action)
         {
             if (condition)
+            {
                 return resultTask.Tap(action);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -56,9 +71,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static ValueTask<Result<T, E>> TapIf<T, E>(this ValueTask<Result<T, E>> resultTask, bool condition, Action<T> action)
         {
             if (condition)
+            {
                 return resultTask.Tap(action);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -67,9 +86,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static ValueTask<UnitResult<E>> TapIf<E>(this ValueTask<UnitResult<E>> resultTask, bool condition, Action action)
         {
             if (condition)
+            {
                 return resultTask.Tap(action);
+            }
             else
+            {
                 return resultTask;
+            }
         }
 
         /// <summary>
@@ -80,9 +103,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return result.Tap(action);
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -93,9 +120,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return result.Tap(action);
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -106,9 +137,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return result.Tap(action);
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -119,9 +154,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Result<T, E> result = await resultTask;
 
             if (result.IsSuccess && predicate(result.Value))
+            {
                 return result.Tap(action);
+            }
             else
+            {
                 return result;
+            }
         }
 
         /// <summary>
@@ -132,10 +171,13 @@ namespace CSharpFunctionalExtensions.ValueTasks
             UnitResult<E> result = await resultTask;
 
             if (result.IsSuccess && predicate())
+            {
                 return result.Tap(action);
+            }
             else
+            {
                 return result;
+            }
         }
     }
 }
-#endif

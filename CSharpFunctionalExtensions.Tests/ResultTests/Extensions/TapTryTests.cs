@@ -31,9 +31,13 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
             actionExecuted.Should().BeFalse();
             
             if (isSuccess)
+            {
                 result.Should().NotBe(returned);
+            }
             else
+            {
                 result.Should().Be(returned);
+            }
         }
 
         [Theory]
@@ -65,9 +69,13 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests.Extensions
             actionExecuted.Should().BeFalse();
             
             if (condition && isSuccess)
+            {
                 result.Should().NotBe(returned);
+            }
             else
+            {
                 result.Should().Be(returned);
+            }
         }
         
         protected void Throwing() => throw new Exception(ErrorMessage);
